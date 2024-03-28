@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<div id="loading-indicator"></div>
 <div class="container my-5">
-    <div id="loading-indicator"></div>
     <h1 class="text-center mb-4">Quiz App</h1>
 
     <!-- Quiz Selection -->
@@ -28,7 +28,27 @@
 
     <!-- Placeholder for Quiz Questions -->
     <div id="quiz-questions" class="mt-4" style="display: none;">
-        <!-- Questions will be rendered here by Handlebars templates -->
+        <script id="question-template" type="text/x-handlebars-template">
+            <div class="question">
+                <h2>{{question}}</h2>
+                {{#if options}} <!-- Multiple-choice questions -->
+                {{#each options}}
+                <button class="answer-btn" data-answer="{{this}}">{{this}}</button>
+                {{/each}}
+                {{else}}
+                {{#if (eq type 'narrative')}} <!-- Narrative questions -->
+                <label for="narrative-answer"></label><input type="text" id="narrative-answer" placeholder="Type your answer here..." />
+                <button id="submit-narrative-answer">Submit</button>
+                {{else if (eq type 'image-selection')}} <!-- Image selection questions -->
+                <div class="image-options">
+                    {{#each options}}
+                    <img src="{{this}}" alt="Image option" class="image-option" data-answer="{{@index}}" />
+                    {{/each}}
+                </div>
+                {{/if}}
+                {{/if}}
+            </div>
+        </script>
     </div>
 
     <!-- Placeholder for Feedback -->
@@ -37,26 +57,6 @@
     </div>
 </div>
 
-<!-- Handlebars Template for Quiz Questions -->
-<script id="question-template" type="text/x-handlebars-template">
-    <div class="question">
-        <h2>{{question}}</h2>
-        {{#if options}} <!-- Multiple-choice questions -->
-        {{#each options}}
-        <button class="answer-btn" data-answer="{{this}}">{{this}}</button>
-        {{/each}}
-        {{else if type === 'narrative'}} <!-- Narrative questions -->
-        <label for="narrative-answer"></label><input type="text" id="narrative-answer" placeholder="Type your answer here..." />
-        <button id="submit-narrative-answer">Submit</button>
-        {{else if type === 'image-selection'}} <!-- Image selection questions -->
-        <div class="image-options">
-            {{#each options}}
-            <img src="{{this}}" alt="Image option" class="image-option" data-answer="{{@index}}" />
-            {{/each}}
-        </div>
-        {{/if}}
-    </div>
-</script>
 <!-- External JS Files -->
 <script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
 <script src="js/templates.js"></script>

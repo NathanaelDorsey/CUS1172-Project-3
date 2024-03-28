@@ -7,7 +7,7 @@ async function fetchQuizzes() {
         console.log('Fetching quizzes...');
         document.getElementById('loading-indicator').style.display = 'block';
 
-        const response = await fetch('https://my-json-server.typicode.com/NathanaelDorsey/CUS1172-Project-3/data/quizzes');
+        const response = await fetch('https://my-json-server.typicode.com/NathanaelDorsey/CUS1172-Project-3/quizzes');
         const quizzes = await response.json();
         console.log('Quizzes:', quizzes); // Log the response to see if data is received
         const selectElement = document.getElementById('quiz-selection');
