@@ -1,32 +1,24 @@
 let currentQuestionIndex = 0;
 let score = 0;
 let questions = [];
+
 async function fetchQuizzes() {
     try {
+        console.log('Fetching quizzes...');
         document.getElementById('loading-indicator').style.display = 'block';
 
-        const response = await fetch('https://my-json-server.typicode.com/NathanaelDorsey/CUS1172-Project-3/quizzes');
+        const response = await fetch('https://my-json-server.typicode.com/NathanaelDorsey/CUS1172-Project-3/data/quizzes');
         const quizzes = await response.json();
+        console.log('Quizzes:', quizzes); // Log the response to see if data is received
         const selectElement = document.getElementById('quiz-selection');
-
-        // Clear any existing options
-        selectElement.innerHTML = '';
-
-        // Add the default placeholder option
-        const defaultOption = document.createElement('option');
-        defaultOption.value = '';
-        defaultOption.textContent = '--Please choose an option--';
-        selectElement.appendChild(defaultOption);
-
-        // Populate the select element with options from quizzes
         quizzes.forEach(quiz => {
             const option = document.createElement('option');
             option.value = quiz.id;
             option.textContent = quiz.name;
             selectElement.appendChild(option);
         });
-
         document.getElementById('loading-indicator').style.display = 'none';
+        console.log('Quizzes fetched successfully.');
     } catch (error) {
         console.error('Failed to fetch quizzes:', error);
         // Display an error message to the user
