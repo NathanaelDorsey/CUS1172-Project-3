@@ -5,7 +5,7 @@
       "name": "Secure Coding Practices",
       "questions": [
         {
-          "questionId": 2,
+          "questionId": 1,
           "type": "multiple-choice",
           "question": "What is the most effective way to prevent SQL injection attacks?",
           "options": ["Using regular expressions to sanitize input",
@@ -15,7 +15,7 @@
           "answer": "Using prepared statements with parameterized queries"
         },
         {
-          "questionId": 1,
+          "questionId": 2,
           "type": "narrative",
           "question": "What term describes the practice of continuously validating and updating security measures to protect against emerging threats?",
           "answer": "Hardening"

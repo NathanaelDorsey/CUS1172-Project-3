@@ -77,7 +77,9 @@ function displayQuestion(question) {
 
 function checkAnswer(selectedAnswer) {
     const correctAnswer = questions[currentQuestionIndex].answer;
-    if (selectedAnswer === correctAnswer) {
+    const selectedAnswerNormalized = selectedAnswer.trim().toLowerCase();
+    const correctAnswerNormalized = correctAnswer.trim().toLowerCase();
+    if (selectedAnswerNormalized === correctAnswerNormalized) {
         score++;
         alert("Correct!");
     } else {
@@ -99,8 +101,7 @@ function displayResults() {
 document.getElementById('quiz-questions').addEventListener('click', (event) => {
     console.log('Clicked element:', event.target);
     if (event.target.classList.contains('answer-btn')) {
-        const selectedAnswerIndex = event.target.getAttribute('data-answer');
-        const selectedAnswer = questions[currentQuestionIndex].options[selectedAnswerIndex];
+        const selectedAnswer = event.target.textContent.trim();
         checkAnswer(selectedAnswer);
     } else if (event.target.classList.contains('image-option')) {
         const selectedImageIndex = event.target.getAttribute('data-answer');
