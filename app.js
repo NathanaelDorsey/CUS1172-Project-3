@@ -1,29 +1,39 @@
-document.addEventListener("DOMContentLoaded",() => {
-    let currentQuestionIndex = 0;
-    let score = 0;
-    let questions = [];
+let currentQuestionIndex = 0;
+let score = 0;
+let questions = [];
+async function fetchQuizzes() {
+    try {
+        document.getElementById('loading-indicator').style.display = 'block';
 
-    async function fetchQuizzes() {
-        try {
-            document.getElementById('loading-indicator').style.display = 'block';
+        const response = await fetch('https://my-json-server.typicode.com/NathanaelDorsey/CUS1172-Project-3/quizzes');
+        const quizzes = await response.json();
+        const selectElement = document.getElementById('quiz-selection');
 
-            const response = await fetch('https://my-json-server.typicode.com/NathanaelDorsey/CUS1172-Project-3/quizzes');
-            const quizzes = await response.json();
-            const selectElement = document.getElementById('quiz-selection');
-            quizzes.forEach(quiz => {
-                const option = document.createElement('option');
-                option.value = quiz.id;
-                option.textContent = quiz.name;
-                selectElement.appendChild(option);
-            });
-            document.getElementById('loading-indicator').style.display = 'none';
-        } catch (error) {
-            console.error('Failed to fetch quizzes:', error);
+        // Clear any existing options
+        selectElement.innerHTML = '';
 
-            document.getElementById('quiz-error').textContent = 'Failed to load quizzes. Please try again later.';
-            document.getElementById('loading-indicator').style.display = 'none';
-        }
+        // Add the default placeholder option
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = '--Please choose an option--';
+        selectElement.appendChild(defaultOption);
+
+        // Populate the select element with options from quizzes
+        quizzes.forEach(quiz => {
+            const option = document.createElement('option');
+            option.value = quiz.id;
+            option.textContent = quiz.name;
+            selectElement.appendChild(option);
+        });
+
+        document.getElementById('loading-indicator').style.display = 'none';
+    } catch (error) {
+        console.error('Failed to fetch quizzes:', error);
+        // Display an error message to the user
+        document.getElementById('quiz-error').textContent = 'Failed to load quizzes. Please try again later.';
+        document.getElementById('loading-indicator').style.display = 'none';
     }
+}
 
 
     document.addEventListener('DOMContentLoaded', fetchQuizzes);
@@ -99,4 +109,3 @@ document.addEventListener("DOMContentLoaded",() => {
             checkAnswer(questions[currentQuestionIndex].options[selectedImageIndex]);
         }
     });
-});
