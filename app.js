@@ -1,12 +1,11 @@
 let currentQuestionIndex = 0;
 let score = 0;
 let questions = [];
-document.addEventListener('DOMContentLoaded', fetchQuizzes);
 async function fetchQuizzes() {
     try {
         document.getElementById('loading-indicator').style.display = 'block';
 
-        const response = await fetch('https://my-json-server.typicode.com/NathanaelDorsey/CUS1172-Project-3/db/quizzes');
+        const response = await fetch('https://my-json-server.typicode.com/NathanaelDorsey/CUS1172-Project-3/quizzes');
         const quizzes = await response.json();
         const selectElement = document.getElementById('quiz-selection');
         quizzes.forEach(quiz => {
@@ -35,7 +34,7 @@ document.getElementById('start-quiz').addEventListener('click', async () => {
 
 async function fetchQuizQuestions(quizId) {
     try {
-        const response = await fetch(`https://my-json-server.typicode.com/NathanaelDorsey/CUS1172-Project-3/db/quizzes/${quizId}`);
+        const response = await fetch(`https://my-json-server.typicode.com/NathanaelDorsey/CUS1172-Project-3/quizzes/${quizId}`);
         const quizData = await response.json();
         questions = quizData.questions;
         currentQuestionIndex = 0;
