@@ -1,31 +1,104 @@
 {
-  "posts": [
+  "quizzes": [
     {
       "id": 1,
-      "title": "Post 1"
+      "name": "Secure Coding Practices",
+      "questions": [
+        {
+          "questionId": 1,
+          "type": "multiple-choice",
+          "question": "What is the most effective way to prevent SQL injection attacks?",
+          "options": ["Using regular expressions to sanitize input", "Employing client-side validation", "Using prepared statements with parameterized queries", "Limiting the length of input"],
+          "answer": "Using prepared statements with parameterized queries"
+        },
+        {
+          "questionId": 2,
+          "type": "narrative",
+          "question": "Explain the importance of input validation in secure coding.",
+          "answer": "Input validation is crucial in secure coding to ensure that only properly formatted data is entered into a system. This helps prevent attacks such as SQL injection, cross-site scripting, and command injection, which exploit input vulnerabilities to compromise security."
+        },
+        {
+          "questionId": 3,
+          "type": "multiple-choice",
+          "question": "Which of the following is a common secure coding practice?",
+          "options": ["Hardcoding sensitive information", "Using encryption for data at rest and in transit", "Avoiding version control", "None of the above"],
+          "answer": "Using encryption for data at rest and in transit"
+        },
+        {
+          "questionId": 4,
+          "type": "multiple-choice",
+          "question": "Why is it important to keep software and libraries up-to-date?",
+          "options": [
+            "To ensure compatibility with other programs",
+            "To maintain software performance",
+            "To patch security vulnerabilities",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        },
+        {
+          "questionId": 5,
+          "type": "multiple-choice",
+          "question": "Which of the following practices is NOT recommended for secure coding?",
+          "options": [
+            "Regularly using static code analysis tools",
+            "Storing sensitive information in source code",
+            "Implementing proper error handling",
+            "Following the principle of least privilege"
+          ],
+          "answer": "Storing sensitive information in source code"
+        }
+      ]
     },
     {
       "id": 2,
-      "title": "Post 2"
-    },
-    {
-      "id": 3,
-      "title": "Post 3"
+      "name": "Cybersecurity Threat Awareness",
+      "questions": [
+        {
+          "questionId": 1,
+          "type": "multiple-choice",
+          "question": "Which of the following is considered a social engineering attack?",
+          "options": ["DDoS attack", "Phishing", "SQL Injection", "Buffer Overflow"],
+          "answer": "Phishing"
+        },
+        {
+          "questionId": 2,
+          "type": "multiple-choice",
+          "question": "What action can individuals take to prevent becoming a victim of ransomware?",
+          "options": ["Opening email attachments from unknown senders", "Downloading software from reputable sites only", "Using the same password for multiple accounts", "Ignoring software update notifications"],
+          "answer": "Downloading software from reputable sites only"
+        },
+        {
+          "questionId": 3,
+          "type": "narrative",
+          "question": "Describe a man-in-the-middle (MITM) attack and how to prevent it.",
+          "answer": "A man-in-the-middle (MITM) attack occurs when an attacker intercepts communication between two parties to steal or manipulate the data. Preventing MITM attacks involves using encrypted connections (e.g., HTTPS), employing VPN services for secure communication, and educating users on the importance of secure connections."
+        },
+        {
+          "questionId": 4,
+          "type": "multiple-choice",
+          "question": "What is the primary purpose of a firewall?",
+          "options": [
+            "Monitoring network traffic",
+            "Blocking unauthorized access while permitting outward communication",
+            "Encrypting personal data",
+            "Detecting and removing viruses and other malware"
+          ],
+          "answer": "Blocking unauthorized access while permitting outward communication"
+        },
+        {
+          "questionId": 5,
+          "type": "multiple-choice",
+          "question": "Which of the following is a secure practice for managing passwords?",
+          "options": [
+            "Using the same password for multiple accounts for easy recall",
+            "Writing down passwords and keeping them under the keyboard",
+            "Using long, complex passwords and a reputable password manager",
+            "Sharing passwords with trusted colleagues for backup"
+          ],
+          "answer": "Using long, complex passwords and a reputable password manager"
+        }
+      ]
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    },
-    {
-      "id": 2,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
