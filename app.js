@@ -27,77 +27,83 @@ async function fetchQuizzes() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM content loaded.');
+    fetchQuizzes();
+});
 
-    document.addEventListener('DOMContentLoaded', fetchQuizzes);
-    document.getElementById('start-quiz').addEventListener('click', async () => {
-        const quizId = document.getElementById('quiz-selection').value;
-        if (!quizId) return;
-        await fetchQuizQuestions(quizId);
-        document.getElementById('quiz-intro').style.display = 'none';
-    });
+document.getElementById('start-quiz').addEventListener('click', async () => {
+    console.log('Start quiz button clicked.');
+    const quizId = document.getElementById('quiz-selection').value;
+    if (!quizId) return;
+    await fetchQuizQuestions(quizId);
+    document.getElementById('quiz-intro').style.display = 'none';
+});
 
-    async function fetchQuizQuestions(quizId) {
-        try {
-            const response = await fetch(`https://my-json-server.typicode.com/NathanaelDorsey/CUS1172-Project-3/quizzes/${quizId}`);
-            const quizData = await response.json();
-            questions = quizData.questions;
-            currentQuestionIndex = 0;
-            score = 0;
+async function fetchQuizQuestions(quizId) {
+    try {
+        console.log('Fetching quiz questions...');
+        const response = await fetch(`https://my-json-server.typicode.com/NathanaelDorsey/CUS1172-Project-3/quizzes/${quizId}`);
+        const quizData = await response.json();
+        console.log('Quiz questions:', quizData); // Log the questions data
+        questions = quizData.questions;
+        currentQuestionIndex = 0;
+        score = 0;
 
-            if (questions.length > 0) {
-                displayQuestion(questions[currentQuestionIndex]);
-            } else {
-                console.log("No questions found for the selected quiz.");
-            }
-        } catch (error) {
-            console.error('Failed to fetch questions:', error);
-        }
-    }
-
-    function displayQuestion(question) {
-        const compileTemplate = window.getQuestionTemplate();
-        const html = compileTemplate(question);
-        document.getElementById('quiz-questions').innerHTML = html;
-
-
-        if (question.type === "narrative") {
-            document.getElementById('submit-narrative-answer').addEventListener('click', () => {
-                const narrativeAnswer = document.getElementById('narrative-answer').value.trim();
-                checkAnswer(narrativeAnswer);
-            });
-        }
-    }
-
-    function checkAnswer(selectedAnswer) {
-        const correctAnswer = questions[currentQuestionIndex].answer;
-        if (selectedAnswer === correctAnswer) {
-            score++;
-            alert("Correct!");
-        } else {
-            alert("Incorrect. The correct answer was: " + correctAnswer);
-        }
-
-        currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) {
+        if (questions.length > 0) {
             displayQuestion(questions[currentQuestionIndex]);
         } else {
-            displayResults();
+            console.log("No questions found for the selected quiz.");
         }
+    } catch (error) {
+        console.error('Failed to fetch questions:', error);
     }
+}
 
-    function displayResults() {
-        const resultsHTML = `<h2>Quiz Completed!</h2><p>Your score is ${score} out of ${questions.length}.</p>`;
-        document.getElementById('quiz-questions').innerHTML = resultsHTML;
+function displayQuestion(question) {
+    console.log('Displaying question:', question);
+    const compileTemplate = window.getQuestionTemplate();
+    const html = compileTemplate(question);
+    document.getElementById('quiz-questions').innerHTML = html;
+
+    if (question.type === "narrative") {
+        console.log('Narrative question detected.');
+        document.getElementById('submit-narrative-answer').addEventListener('click', () => {
+            const narrativeAnswer = document.getElementById('narrative-answer').value.trim();
+            checkAnswer(narrativeAnswer);
+        });
     }
+}
 
-    document.getElementById('quiz-questions').addEventListener('click', (event) => {
+function checkAnswer(selectedAnswer) {
+    const correctAnswer = questions[currentQuestionIndex].answer;
+    if (selectedAnswer === correctAnswer) {
+        score++;
+        alert("Correct!");
+    } else {
+        alert("Incorrect. The correct answer was: " + correctAnswer);
+    }
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        displayQuestion(currentQuestionIndex);
+    } else {
+        displayResults();
+    }
+}
 
-        if (event.target.classList.contains('answer-btn')) {
-            const selectedAnswerIndex = event.target.getAttribute('data-answer');
-            const selectedAnswer = questions[currentQuestionIndex].options[selectedAnswerIndex];
-            checkAnswer(selectedAnswer);
-        } else if (event.target.classList.contains('image-option')) {
-            const selectedImageIndex = event.target.getAttribute('data-answer');
-            checkAnswer(questions[currentQuestionIndex].options[selectedImageIndex]);
-        }
-    });
+function displayResults() {
+    const resultsHTML = `<h2>Quiz Completed!</h2><p>Your score is ${score} out of ${questions.length}.</p>`;
+    document.getElementById('quiz-questions').innerHTML = resultsHTML;
+}
+
+document.getElementById('quiz-questions').addEventListener('click', (event) => {
+    console.log('Clicked element:', event.target);
+    if (event.target.classList.contains('answer-btn')) {
+        const selectedAnswerIndex = event.target.getAttribute('data-answer');
+        const selectedAnswer = questions[currentQuestionIndex].options[selectedAnswerIndex];
+        checkAnswer(selectedAnswer);
+    } else if (event.target.classList.contains('image-option')) {
+        const selectedImageIndex = event.target.getAttribute('data-answer');
+        checkAnswer(questions[currentQuestionIndex].options[selectedImageIndex]);
+    }
+});
