@@ -14,15 +14,20 @@
         {
           "questionId": 2,
           "type": "narrative",
-          "question": "Explain the importance of input validation in secure coding.",
-          "answer": "Input validation is crucial in secure coding to ensure that only properly formatted data is entered into a system. This helps prevent attacks such as SQL injection, cross-site scripting, and command injection, which exploit input vulnerabilities to compromise security."
+          "question": "What term describes the practice of continuously validating and updating security measures to protect against emerging threats?",
+          "answer": "Hardening"
         },
         {
           "questionId": 3,
-          "type": "multiple-choice",
-          "question": "Which of the following is a common secure coding practice?",
-          "options": ["Hardcoding sensitive information", "Using encryption for data at rest and in transit", "Avoiding version control", "None of the above"],
-          "answer": "Using encryption for data at rest and in transit"
+          "type": "image-selection",
+          "question": "Select the image that represents the icon commonly displayed by browsers to indicate a secure HTTPS connection.",
+          "options": [
+            "https_lock.png",
+            "http_open.png",
+            "warning_triangle.png",
+            "world_globe.png"
+          ],
+          "answer": "image_url_https_lock.png"
         },
         {
           "questionId": 4,
@@ -71,8 +76,8 @@
         {
           "questionId": 3,
           "type": "narrative",
-          "question": "Describe a man-in-the-middle (MITM) attack and how to prevent it.",
-          "answer": "A man-in-the-middle (MITM) attack occurs when an attacker intercepts communication between two parties to steal or manipulate the data. Preventing MITM attacks involves using encrypted connections (e.g., HTTPS), employing VPN services for secure communication, and educating users on the importance of secure connections."
+          "question": "What type of cybersecurity attack involves intercepting and altering communications between two parties without their knowledge?",
+          "answer": "MITM"
         },
         {
           "questionId": 4,
@@ -88,15 +93,15 @@
         },
         {
           "questionId": 5,
-          "type": "multiple-choice",
-          "question": "Which of the following is a secure practice for managing passwords?",
+          "type": "image-selection",
+          "question": "Which image represents a commonly used symbol or concept associated with encryption or cryptographic security?",
           "options": [
-            "Using the same password for multiple accounts for easy recall",
-            "Writing down passwords and keeping them under the keyboard",
-            "Using long, complex passwords and a reputable password manager",
-            "Sharing passwords with trusted colleagues for backup"
+            "lock_encryption.png",
+            "firewall.png",
+            "key.png",
+            "virus.png"
           ],
-          "answer": "Using long, complex passwords and a reputable password manager"
+          "answer": "image_url_lock_encryption.png"
         }
       ]
     }
