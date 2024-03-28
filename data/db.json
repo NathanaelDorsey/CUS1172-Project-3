@@ -22,12 +22,12 @@
           "type": "image-selection",
           "question": "Select the image that represents the icon commonly displayed by browsers to indicate a secure HTTPS connection.",
           "options": [
-            "https_lock.png",
-            "http_open.png",
-            "warning_triangle.png",
-            "world_globe.png"
+            "/images/https_lock.png",
+            "/images/http_open.png",
+            "/images/warning_triangle.png",
+            "/images/world_globe.png"
           ],
-          "answer": "image_url_https_lock.png"
+          "answer": "/images/https_lock.png"
         },
         {
           "questionId": 4,
@@ -96,12 +96,12 @@
           "type": "image-selection",
           "question": "Which image represents a commonly used symbol or concept associated with encryption or cryptographic security?",
           "options": [
-            "lock_encryption.png",
-            "firewall.png",
-            "key.png",
-            "virus.png"
+            "/images/lock_encryption.png",
+            "/images/firewall.png",
+            "/images/key.png",
+            "/images/virus.png"
           ],
-          "answer": "image_url_lock_encryption.png"
+          "answer": "/images/lock_encryption.png"
         }
       ]
     }
