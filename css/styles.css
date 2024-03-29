@@ -1,0 +1,131 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#quiz-intro {
+    margin-bottom: 20px;
+}
+
+#quiz-questions {
+    margin-bottom: 20px;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question h2 {
+    margin-bottom: 15px;
+}
+.image-option:hover {
+    border-color: #007bff;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.alert {
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+#scoreboard {
+    margin-bottom: 20px;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+#result-view {
+    text-align: center;
+}
+/* Answer buttons styling */
+.answer-btn, .image-option {
+    margin: 5px; /* Add margin to create spacing */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    text-align: center;
+}
+
+.answer-btn:hover, .image-option:hover {
+    border-color: #007bff;
+    background-color: #e7f1ff;
+}
+
+/* For text-based (narrative and multiple-choice) answers */
+.answer-btn {
+    display: inline-block; /* Display buttons inline with spacing */
+    width: auto; /* Auto width to fit content */
+}
+
+/* For image selection options */
+.image-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the images */
+    gap: 10px; /* Spacing between images */
+}
+
+.image-option {
+    display: block; /* Ensure images are block level for margin to apply */
+    width: 100px; /* Set a fixed width for images */
+    height: 100px; /* Set a fixed height for images */
+    object-fit: cover; /* Cover fit for images within the element box */
+}

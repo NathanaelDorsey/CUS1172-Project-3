@@ -4,61 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App</title>
-    <!-- Bootstrap for styling-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles -->
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
 </head>
 <body>
 <div id="loading-indicator"></div>
 <div class="container my-5">
     <h1 class="text-center mb-4">Quiz App</h1>
-
-    <!-- Quiz Selection -->
     <div id="quiz-intro">
+        <div class="mb-3">
+            <label for="student-name" class="form-label">Your Name:</label>
+            <input type="text" id="student-name" class="form-control" placeholder="Enter your name" />
+        </div>
         <div class="mb-3">
             <label for="quiz-selection" class="form-label">Select a Quiz:</label>
             <select class="form-select" id="quiz-selection">
                 <option value="">--Please choose an option--</option>
-                <!-- Options will be populated here by app.js -->
             </select>
         </div>
         <button id="start-quiz" class="btn btn-primary">Start Quiz</button>
     </div>
-
-    <!-- Placeholder for Quiz Questions -->
-    <div id="quiz-questions" class="mt-4">
-        <script id="question-template" type="text/x-handlebars-template">
-            <div class="question">
-                <h2>{{question}}</h2>
-                {{#if options}} <!-- Multiple-choice questions -->
-                {{#each options}}
-                <button class="answer-btn" data-answer="{{this}}">{{this}}</button>
-                {{/each}}
-                {{else}}
-                {{#if (eq type 'narrative')}} <!-- Narrative questions -->
-                <label for="narrative-answer"></label><input type="text" id="narrative-answer" placeholder="Type your answer here..." />
-                <button id="submit-narrative-answer">Submit</button>
-                {{else if (eq type 'image-selection')}} <!-- Image selection questions -->
-                <div class="image-options">
-                    {{#each options}}
-                    <img src="{{this}}" alt="Image option" class="image-option" data-answer="{{@index}}" />
-                    {{/each}}
-                </div>
-                {{/if}}
-                {{/if}}
-            </div>
-        </script>
+    <div id="scoreboard">
+        <p>Questions Answered: <span id="answered-count">0</span> / <span id="total-count">0</span></p>
+        <p>Elapsed Time: <span id="elapsed-time">0</span> seconds</p>
+        <p>Score: <span id="current-score">0</span></p>
     </div>
-
-    <!-- Placeholder for Feedback -->
-    <div id="quiz-feedback" style="display: none;">
-        <!-- Feedback will be rendered here -->
-    </div>
+    <div id="quiz-questions" class="mt-4"></div>
+    <div id="quiz-feedback"></div>
 </div>
 
-<!-- External JS Files -->
-<script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
 <script src="js/templates.js"></script>
 <script src="app.js"></script>
 </body>
