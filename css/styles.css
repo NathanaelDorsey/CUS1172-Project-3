@@ -1,37 +1,30 @@
 /* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Basic styling */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f0f2f5;
     color: #333;
     line-height: 1.6;
-    padding: 20px;
+    padding: 10px;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
+    color: #0056b3;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-#quiz-intro {
-    margin-bottom: 20px;
-}
-
-#quiz-questions {
+/* Quiz interface styling */
+#quiz-intro, #quiz-questions, #result-view {
     margin-bottom: 20px;
 }
 
@@ -41,16 +34,77 @@ h1 {
 
 .question h2 {
     margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #004085;
 }
-.image-option:hover {
-    border-color: #007bff;
+
+/* Answer choices styling */
+.answer-btn, .image-option {
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    background-color: #e9ecef;
+    cursor: pointer;
+    text-align: center;
+}
+
+.answer-btn:hover, .image-option:hover {
+    background-color: #d4e2f0;
+}
+
+.image-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.image-option {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* Feedback and alerts styling */
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    color: #856404;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* Scoreboard and results styling */
+#scoreboard {
+    background-color: #e2e3e5;
+    border-left: 5px solid #007bff;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#result-view {
+    text-align: center;
+    padding: 20px;
 }
 
 .button {
-    display: block;
-    width: 100%;
+    margin: 10px;
     padding: 10px;
-    margin: 20px 0;
     background-color: #007bff;
     color: white;
     border: none;
@@ -62,70 +116,19 @@ h1 {
     background-color: #0056b3;
 }
 
-.alert {
-    padding: 15px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    margin-bottom: 20px;
-}
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
 
-.alert-success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
+    .image-option {
+        width: 70px;
+        height: 70px;
+    }
 
-.alert-danger {
-    color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
-}
-
-#scoreboard {
-    margin-bottom: 20px;
-    background-color: #e9ecef;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
-}
-
-#result-view {
-    text-align: center;
-}
-/* Answer buttons styling */
-.answer-btn, .image-option {
-    margin: 5px; /* Add margin to create spacing */
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f8f9fa;
-    cursor: pointer;
-    text-align: center;
-}
-
-.answer-btn:hover, .image-option:hover {
-    border-color: #007bff;
-    background-color: #e7f1ff;
-}
-
-/* For text-based (narrative and multiple-choice) answers */
-.answer-btn {
-    display: inline-block; /* Display buttons inline with spacing */
-    width: auto; /* Auto width to fit content */
-}
-
-/* For image selection options */
-.image-options {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center the images */
-    gap: 10px; /* Spacing between images */
-}
-
-.image-option {
-    display: block; /* Ensure images are block level for margin to apply */
-    width: 100px; /* Set a fixed width for images */
-    height: 100px; /* Set a fixed height for images */
-    object-fit: cover; /* Cover fit for images within the element box */
+    .question h2 {
+        font-size: 1em;
+    }
 }
