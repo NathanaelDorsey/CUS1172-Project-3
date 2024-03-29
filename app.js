@@ -69,13 +69,13 @@ async function fetchQuizQuestions(quizId) {
 }
 
 function displayQuestion(question) {
-    console.log("Displaying question:", question);  // Debugging output
+    console.log("Displaying question:", question);
 
     let html = compileTemplate(question);
-    console.log("Generated HTML:", html);  // Debugging output
+    console.log("Generated HTML:", html);
 
     let quizQuestionsDiv = document.getElementById('quiz-questions');
-    quizQuestionsDiv.innerHTML = html;  // Ensure this updates the content
+    quizQuestionsDiv.innerHTML = html;
 
     if (question.type === "narrative") {
         document.getElementById('submit-narrative-answer').addEventListener('click', () => {
@@ -86,7 +86,7 @@ function displayQuestion(question) {
 }
 
 function compileTemplate(question) {
-    let htmlContent = `<div><h2>${question.question}</h2>`;  // Ensure question text is displayed
+    let htmlContent = `<div><h2>${question.question}</h2>`;
     switch (question.type) {
         case 'narrative':
             htmlContent += `<textarea id="narrative-answer"></textarea>`;
@@ -100,12 +100,12 @@ function compileTemplate(question) {
         case 'image-selection':
             htmlContent += '<div class="image-options">';
             question.options.forEach((option, index) => {
-                // Ensure option contains the URL to the image
+
                 htmlContent += `<img src="${option}" alt="Image option ${index}" class="image-option" data-answer="${index}">`;
             });
             htmlContent += '</div>';
             break;
-        // Add other case handlers for different question types if needed
+
     }
     htmlContent += `</div>`;
     return htmlContent;
@@ -113,8 +113,8 @@ function compileTemplate(question) {
 
 function checkAnswer(selectedAnswer) {
     const correctAnswer = questions[currentQuestionIndex].answer;
-    const feedbackElement = document.getElementById('quiz-feedback'); // Ensure this element exists in your HTML
-    feedbackElement.innerHTML = ''; // Clear previous feedback
+    const feedbackElement = document.getElementById('quiz-feedback');
+    feedbackElement.innerHTML = '';
 
     if (selectedAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
         score++;
@@ -122,7 +122,7 @@ function checkAnswer(selectedAnswer) {
         setTimeout(() => {
             feedbackElement.innerHTML = '';
             moveToNextQuestion();
-        }, 1000); // Wait for 1 second then move to the next question
+        }, 1000);
     } else {
         feedbackElement.innerHTML = `
             <div class="alert alert-danger">
@@ -168,7 +168,7 @@ function displayResults() {
     document.getElementById('return-main').addEventListener('click', returnToMain);
 }
 function returnToMain() {
-    document.location.reload(); // or navigate to the main view as needed
+    document.location.reload();
 }
 function startTimer() {
     startTime = Date.now();
@@ -190,17 +190,17 @@ function updateScoreboard() {
 function retakeQuiz() {
     currentQuestionIndex = 0;
     score = 0;
-    document.getElementById('quiz-intro').style.display = 'none'; // Hide intro if not needed
+    document.getElementById('quiz-intro').style.display = 'none';
     document.getElementById('quiz-questions').style.display = 'block';
-    updateScoreboard(); // Update the scoreboard with the reset values
-    displayQuestion(questions[currentQuestionIndex]); // Display the first question again
+    updateScoreboard();
+    displayQuestion(questions[currentQuestionIndex]);
 }
 document.getElementById('quiz-questions').addEventListener('click', (event) => {
     if (event.target.classList.contains('answer-btn')) {
-        // For multiple-choice questions
+
         checkAnswer(event.target.textContent);
     } else if (event.target.classList.contains('image-option')) {
-        // For image-selection questions
+
         const selectedImageIndex = event.target.getAttribute('data-answer');
         const selectedAnswer = questions[currentQuestionIndex].options[selectedImageIndex];
         checkAnswer(selectedAnswer);

@@ -1,5 +1,4 @@
-/* Basic reset */
-/* Basic styling */
+
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background-color: #f0f2f5;
@@ -23,7 +22,7 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Quiz interface styling */
+
 #quiz-intro, #quiz-questions, #result-view {
     margin-bottom: 20px;
 }
@@ -38,7 +37,7 @@ h1 {
     color: #004085;
 }
 
-/* Answer choices styling */
+
 .answer-btn, .image-option {
     margin: 10px;
     padding: 10px;
@@ -65,7 +64,7 @@ h1 {
     object-fit: cover;
 }
 
-/* Feedback and alerts styling */
+
 .alert {
     padding: 10px;
     border-radius: 5px;
@@ -88,7 +87,7 @@ h1 {
     border-color: #f5c6cb;
 }
 
-/* Scoreboard and results styling */
+
 #scoreboard {
     background-color: #e2e3e5;
     border-left: 5px solid #007bff;
@@ -116,7 +115,7 @@ h1 {
     background-color: #0056b3;
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
     .container {
         width: 95%;
